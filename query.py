@@ -22,7 +22,7 @@ def main() -> Dict:
 
 	loading = driver.find_element(By.CLASS_NAME, 'loading')
 	while loading.get_attribute('style') != 'display: none;':
-		time.sleep(0.5)
+		time.sleep(0.25)
 
 	title = driver.find_element(By.CLASS_NAME, 'tabs-header').text
 	title_list = title.split(' ')
