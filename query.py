@@ -37,18 +37,17 @@ def main() -> Dict:
 		risk_list[i] = {}
 	try:
 		for t, area_type in enumerate(area_type_list):
+			if t != 0:
+				driver.execute_script('document.documentElement.scrollTop = 0')
+				elements = driver.find_elements(By.CLASS_NAME, 'tabs-header-tab')
+				element = elements[t]
+				element.click()
+				time.sleep(1)
+
+				loading = driver.find_element(By.CLASS_NAME, 'loading')
+				while loading.get_attribute('style') != 'display: none;':
+					time.sleep(0.5)
 			while True:
-				if t != 0:
-					driver.execute_script('document.documentElement.scrollTop = 0')
-					elements = driver.find_elements(By.CLASS_NAME, 'tabs-header-tab')
-					element = elements[t]
-					element.click()
-					time.sleep(1)
-
-					loading = driver.find_element(By.CLASS_NAME, 'loading')
-					while loading.get_attribute('style') != 'display: none;':
-						time.sleep(0.5)
-
 				next_page = driver.find_element(By.ID, 'nextPage')
 				risk_dom = driver.find_elements(By.CLASS_NAME, 'risk-info-table')
 				for i in risk_dom:
@@ -63,7 +62,7 @@ def main() -> Dict:
 							else:
 								area_list.append(line.text)
 								count += 1
-					risk_list[area_type][name] = area_list
+					risk_list[area_type][name] = list(set(area_list))
 					driver.execute_script('document.documentElement.scrollTop = 1000000')
 					next_page = driver.find_element(By.ID, 'nextPage')
 				if next_page.get_attribute('disabled') is not None:
