@@ -23,9 +23,13 @@ def save_version(version: str, area: Dict[str, Dict]) -> None:
 		f.write(json.dumps(area, ensure_ascii=False))
 
 
-def load_version(version) -> Dict[str, List]:
-	with open(path / pathlib.Path(f"{version}.json"), 'r',encoding='utf-8') as f:
-		return json.loads(f.read())
+def load_version(version: str, is_absolute: bool) -> Dict[str, List]:
+	if is_absolute:
+		with open(path / pathlib.Path(f"{version}.json"), 'r', encoding='utf-8') as f:
+			return json.loads(f.read())
+	else:
+		with open(version, 'r', encoding='utf-8') as f:
+			return json.loads(f.read())
 
 
 def has_version(version: str) -> bool:
@@ -45,7 +49,7 @@ def load_last_version() -> Dict[str, list]:
 	if version_list is None:
 		return query.main()
 	else:
-		return load_version(version_list[-1])
+		return load_version(version_list[-1], True)
 
 
 if __name__ == '__main__':
