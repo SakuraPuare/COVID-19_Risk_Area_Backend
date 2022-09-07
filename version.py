@@ -4,7 +4,7 @@ from typing import Dict, List, Union
 
 import query
 
-path = pathlib.Path('version')
+path = pathlib.Path(__file__).with_name('version')
 
 if not path.exists() and not path.is_dir():
 	path.mkdir()
@@ -45,7 +45,7 @@ def load_last_version() -> Dict[str, list]:
 	if version_list is None:
 		return query.main()
 	else:
-		return version_list[-1]
+		return load_version(version_list[-1])
 
 
 if __name__ == '__main__':
