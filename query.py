@@ -29,7 +29,7 @@ def main() -> Dict:
 	time_f = f"{title_list[0][2:]}-{title_list[1].split('，')[:-1][0]}"
 
 	if version.has_version(time_f):
-		return version.load_version(time_f)
+		return version.load_version(time_f, False)
 
 	area_type_list = ['high', 'mid', 'low']
 	risk_list = {}
@@ -82,5 +82,6 @@ if __name__ == '__main__':
 	response = main()
 	t_now = time.strftime("%Y-%m-%d-%H时", time.localtime())
 	# 2022-09-07-16时
+	print(response)
 	version.save_version(t_now, response)
 	pass
