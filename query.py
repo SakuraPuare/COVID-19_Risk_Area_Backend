@@ -4,6 +4,7 @@ from typing import Dict
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common import StaleElementReferenceException
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
@@ -16,7 +17,10 @@ def main() -> Dict:
 	desired_capabilities = DesiredCapabilities.CHROME  # 修改页面加载策略
 	desired_capabilities["pageLoadStrategy"] = "none"
 
-	driver = webdriver.Chrome()
+	option = FirefoxOptions()
+	option.add_argument('--headless')
+
+	driver = webdriver.Firefox(options=option)
 	driver.maximize_window()
 	driver.get(url)
 
