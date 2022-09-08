@@ -72,10 +72,12 @@ def main() -> Dict:
 					time.sleep(0.2)
 
 		version.save_version(time_f, risk_list)
+		driver.quit()
 		return risk_list
 	except StaleElementReferenceException:
 		driver.quit()
-		return main()
+		print('error')
+		exit(1)
 
 
 if __name__ == '__main__':
@@ -84,4 +86,3 @@ if __name__ == '__main__':
 	# 2022-09-07-16时
 	print(response)
 	version.save_version(t_now, response)
-	pass
