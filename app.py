@@ -12,9 +12,10 @@ app = Flask(__name__)
 
 @app.route('/admin/refresh/')
 def refresh_admin():
-	global risk_data
-	risk_data = query.main()
-	return "OK", 200
+        print('Start to Refresh')
+        global risk_data
+        risk_data = query.main()
+        print('Refresh Success')
 
 
 @app.errorhandler(404)
