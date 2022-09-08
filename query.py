@@ -14,9 +14,6 @@ import version
 def main() -> Dict:
 	url = 'http://bmfw.www.gov.cn/yqfxdjcx/risk.html'
 
-	desired_capabilities = DesiredCapabilities.CHROME  # 修改页面加载策略
-	desired_capabilities["pageLoadStrategy"] = "none"
-
 	option = FirefoxOptions()
 	option.add_argument('--headless')
 
