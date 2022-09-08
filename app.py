@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask
 
 import query
@@ -26,6 +28,12 @@ def forbidden():
 
 
 @app.route('/api/search/<string:area>')
+def api_time():
+	v = [i.split('/')[-1] for i in version.list_version()]
+	return json.dumps(v)
+
+
+@app.route('/search/<string:area>')
 def api_search(area):
 	search_results = {}
 	for t in risk_data:
