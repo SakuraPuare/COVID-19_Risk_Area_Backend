@@ -56,15 +56,15 @@ def main() -> Dict:
 					area_list = []
 					for _ in soup.findAll("tr"):
 						count = 1
-						for line in soup.findAll("td"):
+						for line in _.findAll("td"):
 							if count % 2 == 0:
 								continue
 							else:
 								area_list.append(line.text)
 								count += 1
 					risk_list[area_type][name] = list(set(area_list))
-					driver.execute_script('document.documentElement.scrollTop = 1000000')
-					next_page = driver.find_element(By.ID, 'nextPage')
+				driver.execute_script('document.documentElement.scrollTop = 1000000')
+				next_page = driver.find_element(By.ID, 'nextPage')
 				if next_page.get_attribute('disabled') is not None:
 					break
 				else:
