@@ -28,9 +28,6 @@ def main() -> Dict:
 	title_list = title.split(' ')
 	time_f = f"{title_list[0][2:]}-{title_list[1].split('，')[:-1][0]}"
 
-	if version.has_version(time_f):
-		return version.load_version(time_f, False)
-
 	area_type_list = ['high', 'mid', 'low']
 	risk_list = {}
 	for i in area_type_list:
