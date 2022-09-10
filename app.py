@@ -2,7 +2,7 @@ import json
 
 from flask import Flask
 
-import query
+import request
 import version
 
 risk_data = version.load_last_version()
@@ -14,7 +14,7 @@ app = Flask(__name__)
 def refresh_admin():
 	print('Start to Refresh')
 	global risk_data
-	risk_data = query.main()
+	risk_data = request.main()
 	print('Refresh Success')
 
 
