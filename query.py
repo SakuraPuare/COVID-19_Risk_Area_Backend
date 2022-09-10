@@ -6,7 +6,6 @@ from selenium import webdriver
 from selenium.common import StaleElementReferenceException
 from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 import version
 
