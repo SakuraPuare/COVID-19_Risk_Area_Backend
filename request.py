@@ -32,7 +32,7 @@ def get_signature_header() -> str:
 
 
 def main() -> Dict[str, Dict[str, List[str]]]:
-	url = 'https://bmfw.www.gov.cn/bjww/interface/interfaceJson'
+	url = 'http://bmfw.www.gov.cn/bjww/interface/interfaceJson'
 
 	headers = {
 		"Accept": "application/json, text/javascript, */*; q=0.01",
